@@ -2,11 +2,18 @@
   <div class="hello">
 
     <h3 :class="styleObject" :style="{fontSize : value + 'px'}">{{ value }}</h3>
-
+  
     <button @click="value++">+</button>
     <button @click="value--">-</button>
     <button @click="error = ! error">Red</button>
     <button @click="underline = ! underline">Green</button>
+
+
+
+    <!-- <button @click="vuexstore">test</button> -->
+
+    <h3 >{{ appDatamap }}</h3>
+    <button @click="fatal">dhdfh</button>
   </div>
 </template>
 
@@ -28,6 +35,9 @@ export default {
       // this.error = false;
       // this.underline = false;
       console.log('this is click');
+    },
+    fatal(){
+      this.vuexstore
     }
   },
   computed:{
@@ -36,6 +46,12 @@ export default {
         'changeBackground':this.value >5 && this.error,
          'underline': this.underline
          }
+    },
+    appDatamap:function(){
+      return this.$store.getters.appName
+    },
+    vuexstore :function(){
+      return this.$store.commit('increment' , ' khan')
     }
   }
 }
